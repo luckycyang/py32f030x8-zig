@@ -11,17 +11,22 @@ pub fn build(b: *std.Build) void {
     });
     const optimize = b.standardOptimizeOption(.{});
 
+    // base app
     const app = b.addModule("app", .{
         .target = target,
         .optimize = optimize,
+        .root_source_file = b.path("src/main.zig"),
     });
-
-    app.addCSourceFiles(.{ .files = &.{ "src/main.c", "startup/cortex-m.c" } });
+    app.addCSourceFiles(.{ .files = &.{"startup/cortex-m.c"} });
 
     const exe = b.addExecutable(.{
         .name = "demo",
         .root_module = app,
     });
+
+    // add reg header file
+    exe.addIncludePath(b.path("PY32F0xx_Firmware/Drivers/CMSIS/Include"));
+    exe.addIncludePath(b.path("PY32F0xx_Firmware/Drivers/CMSIS/Device/PY32F0xx/Include"));
 
     exe.setLinkerScript(b.path("startup/standalone.ld"));
 

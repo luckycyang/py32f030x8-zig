@@ -1,3 +1,6 @@
 [submodule "PY32F0xx_Firmware"]
 	path = PY32F0xx_Firmware
 	url = https://github.com/OpenPuya/PY32F0xx_Firmware.git
+[submodule "picolibc"]
+	path = picolibc
+	url = https://github.com/picolibc/picolibc
