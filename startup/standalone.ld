@@ -49,8 +49,6 @@ SECTIONS
         LONG(ORIGIN(RAM) + LENGTH(RAM));
         . = ALIGN(4);
         KEEP(*(.isr_vector))
-        *(.text*)
-        *(.rodata*)
     } > FLASH
   /* The program code and other data goes into FLASH */
   .text :

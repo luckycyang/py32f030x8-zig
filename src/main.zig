@@ -3,14 +3,20 @@ const py32f030x8 = @cImport({
     @cInclude("py32f0xx.h");
 });
 
+const hal = @cImport({
+    @cDefine("PY32F030x8", "y");
+    @cInclude("py32f0xx_hal.h");
+});
+
 export fn main() void {
+    // _ = hal.HAL_Init();
     const rcc: [*c]volatile py32f030x8.RCC_TypeDef = py32f030x8.RCC;
     const gpioa: [*c]volatile py32f030x8.GPIO_TypeDef = py32f030x8.GPIOA;
     rcc.*.IOPENR &= ~py32f030x8.RCC_IOPENR_GPIOAEN;
     rcc.*.IOPENR |= py32f030x8.RCC_IOPENR_GPIOAEN;
     gpioa.*.MODER &= ~py32f030x8.GPIO_MODER_MODE2;
-    gpioa.*.MODER |= py32f030x8.GPIO_MODER_MODE2 & (1 << py32f030x8.GPIO_MODER_MODE2_Pos);
     gpioa.*.OTYPER &= ~py32f030x8.GPIO_OTYPER_OT2;
+    gpioa.*.MODER |= py32f030x8.GPIO_MODER_MODE2 & (1 << py32f030x8.GPIO_MODER_MODE2_Pos);
     gpioa.*.OTYPER |= py32f030x8.GPIO_OTYPER_OT2 & (1 << py32f030x8.GPIO_OTYPER_OT2_Pos);
 
     while (true) {
