@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/cyang/Public/GitCell/py32f030x8-zig/build/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

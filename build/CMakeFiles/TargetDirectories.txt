@@ -1,3 +1,0 @@
-/home/cyang/Public/GitCell/py32f030x8-zig/build/CMakeFiles/hal.dir
-/home/cyang/Public/GitCell/py32f030x8-zig/build/CMakeFiles/edit_cache.dir
-/home/cyang/Public/GitCell/py32f030x8-zig/build/CMakeFiles/rebuild_cache.dir
